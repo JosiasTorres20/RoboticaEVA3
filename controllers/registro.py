@@ -11,14 +11,38 @@ def crearCuenta():
     limpiar()
     print("Creando Cuenta")
 
-    nombre = entradas("Ingrese Nombre")
-    limpiar()
+    while True:
+        nombre = entradas("Ingrese Nombre")
+        
+        if not nombre.strip().isalpha():
+            limpiar()
+            print("Nombre invalido. Solo letras y no debe estar vacio")
+        else:
+            limpiar()
+            break
 
-    apellidoPaterno = entradas("Ingrese Apellido Paterno")
-    limpiar()
 
-    apellidoMaterno = entradas("Ingrese Apellido Materno")
-    limpiar()
+    while True:
+        apellidoPaterno = entradas("Ingrese Apellido Paterno")
+
+        if not apellidoPaterno.strip().isalpha():
+            limpiar()
+            print("Apellido paterno invalido. Solo letras y no debe estar vacio")
+        else:
+            limpiar()
+            break
+
+
+    while True:
+        apellidoMaterno = entradas("Ingrese Apellido Materno")
+
+        if not apellidoMaterno.strip().isalpha():
+            limpiar()
+            print("Apellido materno invalido. Solo letras y no debe estar vacio")
+        else:
+            limpiar()
+            break
+
 
     while True:
         rut = entradas("Ingrese Rut")
@@ -35,7 +59,6 @@ def crearCuenta():
 
 
     while True:
-
         clave = entradas("Ingrese Clave")
 
         if not validarClave(clave):
