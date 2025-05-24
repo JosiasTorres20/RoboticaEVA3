@@ -16,15 +16,21 @@ def soloTexto(texto):
 def rutUnico():
     while True:
         rut = entradas("Ingrese RUT")
+        largo_rut = len(rut)
+
         if not validarFormatoRut(rut):
             limpiar()
             print("Formato de RUT incorrecto. \033[03;30m12345678-9\033[0m")
+        elif largo_rut != 10:
+            limpiar()
+            print("El RUT debe tener 10 caracteres, incluyendo el guion.")
         elif buscarRut(rut):
             limpiar()
             print("RUT ya registrado")
         else:
             limpiar()
             return rut
+
 
 def claveSegura():
     while True:
