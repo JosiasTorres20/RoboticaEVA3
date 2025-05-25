@@ -5,34 +5,60 @@ from utils.utils import entradas, limpiar
 from database.db import guardarUsuario
 from models.usuario import Usuario
 from services.validaciones import soloTexto, rutUnico, claveSegura
-
+import sys
 
 
 def crearCuenta():
     limpiar()
     print("Creando Cuenta")
-    nombre = soloTexto("Ingrese Nombre")
+    try:
+        while True:
+            try:
+                nombre = soloTexto("Nombre")
+                break
+            except ValueError:
+                continue
 
-    apellidoPaterno = soloTexto("Ingrese Apellido Paterno")
+        while True:
+            try:
+                apellidoPaterno = soloTexto("Apellido Paterno")
+                break
+            except ValueError:
+                continue
 
-    apellidoMaterno = soloTexto("Ingrese Apellido Materno")
+        while True:
+            try:
+                apellidoMaterno = soloTexto("Apellido Materno")
+                break
+            except ValueError:
+                continue
 
-    rut = rutUnico("Ingrese Rut")
+        while True:
+            try:
+                rut = rutUnico()
+                break
+            except ValueError:
+                continue
 
-    clave = claveSegura("Ingrese Clave")
+        while True:
+            try:
+                clave = claveSegura()
+                break
+            except ValueError:
+                continue
 
-    usuario = Usuario(nombre, apellidoPaterno, apellidoMaterno, rut, clave)
-    guardarUsuario(usuario)
-
-    limpiar()
-    print("\033[03;30mCuenta creada\033[0m")
+        usuario = Usuario(nombre, apellidoPaterno, apellidoMaterno, rut, clave)
+        guardarUsuario(usuario)
+    except KeyboardInterrupt :
+        print("Ejecucion interrumpida")
+        sys.exit(0)
 
 
 def ejecucionCuenta():
     while True:
         crearCuenta()
         limpiar()
-        opcion = entradas("Crear otra cuenta? (s/n)")
+        opcion = entradas("Crear otra cuenta? (s/n)").lower()
         if opcion == "s":
             continue
         elif opcion == "n":

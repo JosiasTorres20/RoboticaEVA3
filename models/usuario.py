@@ -30,18 +30,18 @@ class Usuario:
 
     def to_dict(self):
         return {
-            "nombre": self.__nombre,
-            "apellidoPaterno": self.__apellidoPaterno,
-            "apellidoMaterno": self.__apellidoMaterno,
-            "rut": self.__rut,
-            "clave": self.__clave
+            "Nombre": self.__nombre,
+            "ApellidoPaterno": self.__apellidoPaterno,
+            "ApellidoMaterno": self.__apellidoMaterno,
+            "Rut": self.__rut,
+            "Clave": self.__clave
         }
 
     def cargarDict(self, data):
-        self.__nombre = data.get("nombre", "")
-        self.__apellidoPaterno = data.get("apellidoPaterno", "")
-        self.__apellidoMaterno = data.get("apellidoMaterno", "")
-        self.__rut = data.get("rut", "")
+        self.__nombre = data.get("Nombre", "")
+        self.__apellidoPaterno = data.get("ApellidoPaterno", "")
+        self.__apellidoMaterno = data.get("ApellidoMaterno", "")
+        self.__rut = data.get("Rut", "")
         self.__clave = data.get("Clave", "")
         return self
     def __str__(self):

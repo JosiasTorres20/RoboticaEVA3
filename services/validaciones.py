@@ -6,18 +6,16 @@ from services.rut import validarFormatoRut
 def soloTexto(texto):
     while True:
         try: 
-            dato = entradas(f"Ingrese {texto}")
+            dato = entradas(texto)
             if not dato.strip().isalpha():
-                limpiar()
-                print(f"{texto} invalido. Solo letras y no debe estar vacio")
-
-                return dato
+                raise ValueError(f"El campo no debe estar vacio y solo debe contener letras. \033[03;30m{dato}\033[0m") 
+            limpiar()
+            return dato
         except ValueError as ve:
             limpiar()
             print(ve)
-        except KeyboardInterrupt:
-            print("Ejecucion interrumpida")
-            return ""
+            raise
+
         
 def rutUnico():
     while True:
@@ -35,9 +33,7 @@ def rutUnico():
         except ValueError as ve:
             limpiar()
             print(ve)
-        except KeyboardInterrupt:
-            print("Ejecucion interrumpida")
-            return ""
+
 
 
 def claveSegura():
@@ -54,4 +50,3 @@ def claveSegura():
             print(ve)
         except KeyboardInterrupt:
             print("Ejecucion interrumpida")
-            return ""
