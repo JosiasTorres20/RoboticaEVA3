@@ -11,8 +11,6 @@ from services.validaciones import soloTexto, rutUnico, claveSegura
 def crearCuenta():
     limpiar()
     print("Creando Cuenta")
-
-
     nombre = soloTexto("Ingrese Nombre")
 
     apellidoPaterno = soloTexto("Ingrese Apellido Paterno")
